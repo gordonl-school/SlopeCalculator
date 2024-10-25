@@ -49,28 +49,36 @@ public class LinearEquation {
         if (y1 == y2) {
             return "y = " + yIntercept();
         }
-        /**
-         if ((int) slope() == slope()) {
-         return "y = " + (int) slope() + "x + " + yIntercept();
-         }
-         if (slope() == 1.0) {
-         return "y = x + " + yIntercept();
-         } else if (slope() == -1.0) {
-         return "y = -x + " + yIntercept();
-         }
-         if (slope() < 0) {
-         return "y = -" + Math.abs((y2 - y1)) + "/" + Math.abs(x2 - x1) + "x + " + yIntercept();
-         }
-         if ((y2 - y1) < 0 && ((x2 - x1) < 0)) {
-         return "y = " + (y2 - y1) + "/" + (x2 - x1) + "x + " + yIntercept();
-         }
-         if (yIntercept() == 0) {
-         return "y = " + (y2 - y1) + "/" + (x2 - x1) + "x";
-         }
-         if (yIntercept() < 0) {
-         return "y = " + (y2 - y1) + "/" + (x2 - x1) + "x - " + Math.abs(yIntercept());
-         } **/
-        return "y = " + (y2 - y1) + "/" + (x2 - x1) + "x + " + yIntercept();
+        String finalEquation = "y = " + (y2 - y1) + "/" + (x2 - x1) + "x + " + yIntercept();
+
+//         if (Math.floor(slope()) == slope() || Math.ceil(slope()) == slope()) {
+//             if (slope() == 1.0) {
+//
+//             } else if (slope() == 1.0) {
+//
+//             }
+////         return "y = " + (int) slope() + "x + " + yIntercept();
+//         } else {
+//
+//         }
+//         if (slope() == 1.0) {
+//         return "y = x + " + yIntercept();
+//         } else if (slope() == -1.0) {
+//         return "y = -x + " + yIntercept();
+//         }
+//         if (slope() < 0) {
+//         return "y = -" + Math.abs((y2 - y1)) + "/" + Math.abs(x2 - x1) + "x + " + yIntercept();
+//         }
+//         if ((y2 - y1) < 0 && ((x2 - x1) < 0)) {
+//         return "y = " + (y2 - y1) + "/" + (x2 - x1) + "x + " + yIntercept();
+//         }
+//         if (yIntercept() == 0) {
+//         return "y = " + (y2 - y1) + "/" + (x2 - x1) + "x";
+//         }
+//         if (yIntercept() < 0) {
+//         return "y = " + (y2 - y1) + "/" + (x2 - x1) + "x - " + Math.abs(yIntercept());
+//         }
+        return finalEquation;
     }
 
 
