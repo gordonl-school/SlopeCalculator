@@ -47,38 +47,44 @@ public class LinearEquation {
 
     public String equation() {
         if (y1 == y2) {
-            return "y = " + yIntercept();
+            return "y = " + (int) yIntercept();
         }
-        String finalEquation = "y = " + (y2 - y1) + "/" + (x2 - x1) + "x + " + yIntercept();
+        String firstPart = "y = " + (y2 - y1) + "/" + (x2 - x1) + "x ";
+        String secondPart = "+ " + roundedToHundredth(yIntercept());
 
-//         if (Math.floor(slope()) == slope() || Math.ceil(slope()) == slope()) {
-//             if (slope() == 1.0) {
-//
-//             } else if (slope() == 1.0) {
-//
-//             }
-////         return "y = " + (int) slope() + "x + " + yIntercept();
-//         } else {
-//
-//         }
-//         if (slope() == 1.0) {
-//         return "y = x + " + yIntercept();
-//         } else if (slope() == -1.0) {
-//         return "y = -x + " + yIntercept();
-//         }
-//         if (slope() < 0) {
-//         return "y = -" + Math.abs((y2 - y1)) + "/" + Math.abs(x2 - x1) + "x + " + yIntercept();
-//         }
-//         if ((y2 - y1) < 0 && ((x2 - x1) < 0)) {
-//         return "y = " + (y2 - y1) + "/" + (x2 - x1) + "x + " + yIntercept();
-//         }
-//         if (yIntercept() == 0) {
-//         return "y = " + (y2 - y1) + "/" + (x2 - x1) + "x";
-//         }
-//         if (yIntercept() < 0) {
-//         return "y = " + (y2 - y1) + "/" + (x2 - x1) + "x - " + Math.abs(yIntercept());
-//         }
-        return finalEquation;
+
+        if (slope() > 0) {
+            if (Math.floor(slope()) == slope() || Math.ceil(slope()) == slope()) {
+                if (slope() == 1.0) {
+                    firstPart = "y = x";
+                } else {
+                    firstPart = "y = " + (int) slope() + "x";
+                }
+            } else {
+                if ((y2 - y1) < 0 && (x2 - x1) < 0) {
+                    firstPart = "y = " + Math.abs((y2 - y1)) + "/" + Math.abs((x2 - x1)) + "x ";
+                }
+            }
+        } else {
+            if (Math.floor(slope()) == slope() || Math.ceil(slope()) == slope()) {
+                if (slope() == -1.0) {
+                    firstPart = "y = -x";
+                } else {
+                    firstPart = "y = " + (int) slope() + "x";
+                }
+            } else {
+                firstPart = "y = -" + Math.abs((y2 - y1)) + "/" + Math.abs((x2 - x1)) + "x ";
+            }
+        }
+
+        if (yIntercept() == 0) {
+            secondPart = "";
+        }
+        if (yIntercept() < 0) {
+            secondPart = " - " + roundedToHundredth(Math.abs(yIntercept()));
+        }
+
+        return firstPart + secondPart;
     }
 
 
@@ -96,8 +102,8 @@ public class LinearEquation {
     public String lineInfo() {
         String firstStatement = "The two points are: (" + x1 + ", " + y1 + ") and (" + x2 + ", " + y2 + ")";
         String secondStatement = "The equation of the line between these points is: " + equation();
-        String thirdStatement = "The y-intercept of this line is: " + yIntercept();
-        String fourthStatement = "The slope of this line is: " + slope();
+        String thirdStatement = "The y-intercept of this line is: " + roundedToHundredth(yIntercept());
+        String fourthStatement = "The slope of this line is: " + roundedToHundredth(slope());
         String fifthStatement = "The distance between these points is: " + distance();
         return firstStatement + "\n" + secondStatement + "\n" + thirdStatement + "\n" + fourthStatement + "\n" + fifthStatement;
     }
